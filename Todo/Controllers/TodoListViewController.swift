@@ -17,6 +17,9 @@ class TodoListViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let dataFilePath =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
+        print(dataFilePath)
+        
         let newItem = Item()
         newItem.title = "Find Book!!"
         itemArray.append(newItem)
@@ -67,6 +70,7 @@ class TodoListViewController: UITableViewController {
             let  item = Item()
             item.title = textField.text!
             self.itemArray.append(item)
+            // cannot insert Objects to UserDefaults
             self.defaults.set(self.itemArray, forKey: "todoItemArray")
             self.tableView.reloadData()
            
